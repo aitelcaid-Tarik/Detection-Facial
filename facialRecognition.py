@@ -2,21 +2,8 @@ import cv2
 
 video = cv2.VideoCapture(0)
 
-faces_base = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
-eye_base = cv2.CascadeClassifier('haarcascade_eye_tree_eyeglasses.xml')
-"""
-smile_base = cv2.CascadeClassifier('haarcascade_smile.xml')
-smiles = smile_base.detectMultiScale(gray, scaleFactor=1.5  , minNeighbors=5)
-
-for (a,b,c,d) in smiles:
-
-            color  =  (0,255,0) #BGR
-            strok = 2
-            toul = a+c
-            aerd = b+d
-            cv2.rectangle(frame , (a,b) , (toul,aerd),color,strok)
-
-"""
+faces_base = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt.xml')
+eye_base = cv2.CascadeClassifier('cascades/haarcascade_eye_tree_eyeglasses.xml')
 
 while True:
     rat, frame = video.read(1)
@@ -33,16 +20,16 @@ while True:
         color = (255, 0, 0)  # BGR
         strok = 2
         toul = a+c+10
-        aerd = b+d+10
-        cv2.rectangle(frame, (a, b), (toul, aerd), color, strok)
+        ard = b+d+10
+        cv2.rectangle(frame, (a, b), (toul, ard), color, strok)
 
     for (a, b, c, d) in eyes:
 
         color = (0, 255, 0)  # BGR
         strok = 2
         toul = a+c
-        aerd = b+d
-        cv2.rectangle(frame, (a, b), (toul, aerd), color, strok)
+        ard = b+d
+        cv2.rectangle(frame, (a, b), (toul, ard), color, strok)
 
     cv2.imshow('frame', frame)
     if cv2.waitKey(20) & 0xff == (ord('q')):
